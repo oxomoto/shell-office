@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Basic Web Presentation" />
+    <meta property="og:description" content="A one file presentation template." />
+    <title>Basic Web Presentation</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, caption, sans-serif;
+        }
+
+        main {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        section {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: center;
+            align-items: center;
+        }
+
+        section.hidden {
+            display: none;
+        }
+
+        section div.text {
+            margin: 20px;
+            max-width: 450px;
+        }
+
+        section div.visual {
+            margin: 20px;
+            max-width: 450px;
+            max-height: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            align-self: center;
+            max-height: 90vh;
+            max-width: 90vw;
+        }
+
+    </style>
+</head>
+
+<body>
+    <script>
+        window.onload = () => {
+            let slides = Array.from(document.querySelectorAll('section'))
+
+            for (i = 1; i < slides.length; i++) {
+                let slide = slides[i]
+                hideSlide(slide)
+            }
+
+            document.addEventListener('keydown', () => {
+                if (event.keyCode === 39) moveForward()
+                else if (event.keyCode === 37) moveBackward()
+                else if (event.keyCode === 32) moveForward()
+            })
+
+            function moveForward() {
+                let currentSlide = slides.find(slide => !slide.classList.contains('hidden'))
+                let nextSlide = slides[slides.indexOf(currentSlide) + 1]
+                if (nextSlide) {
+                    console.log('moving forward')
+                    hideSlide(currentSlide)
+                    showSlide(nextSlide)
+                } else {
+                    console.log('reached end')
+                }
+            }
+
+            function moveBackward() {
+                let currentSlide = slides.find(slide => !slide.classList.contains('hidden'))
+                let previousSlide = slides[slides.indexOf(currentSlide) - 1]
+                if (previousSlide) {
+                    console.log('moving backward')
+                    hideSlide(currentSlide)
+                    showSlide(previousSlide)
+                } else {
+                    console.log('reached start')
+                }
+            }
+
+            function showSlide(slide) {
+                if (slide.classList.contains('hidden')) {
+                    slide.classList.remove('hidden')
+                }
+            }
+
+            function hideSlide(slide) {
+                if (!slide.classList.contains('hidden')) {
+                    slide.classList.add('hidden')
+                }
+            }
+        }
+
+    </script>
+    <main>
+        <section>
+            <div class="text">
+                <h2>OK TESTING</h2>
+            </div>
+        </section>
+
+        <section>
+            <img src="src/LFA_Type_0066_001.jpg" />
+        </section>
+        <section style="background: black;">
+            <img src="src/LFA_Type_0066_004.jpg" />
+        </section>
+        <section>
+            <img src="src/monoceros-2-rawscan.jpg" />
+        </section>
+        <section>
+            <h2><a href="https://oxomoto.co">follow latest news here</a></h2>
+        </section>
+        <section>
+            <img src="src/enzo-mari.jpg" />
+        </section>
+        <section>
+            <div class="text">
+                <p>Webinar en Q&A rond intellectuele eigendomsrechten in de kunstensector
+
+                    Wil jij als kunstenorganisatie je archiefmateriaal online activeren? Heb je vragen rond de rechtenstatus van je archief? Wil je weten hoe je rechten vandaag kan documenteren om ze in de toekomst eenvoudig te klaren?
+
+                    De coronamaatregelen zorgden voor een groei in online ontsluitingsinitiatieven en deed dit soort vragen enkel toenemen. Om materiaal online te ontsluiten, is het meer dan ooit noodzakelijk om zicht te hebben op de rechtenstatus van archiefmateriaal en om waar mogelijk van bij het begin goede afspraken te maken met de vervaardigers en eventuele andere rechthebbenden.
+
+                    Om deze vragen te beantwoorden voorzien we samen met de partners binnen TRACKS vanaf eind september een online webinar voor de kunstensector gevolgd door een virtuele vraag-en antwoordsessie.</p>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

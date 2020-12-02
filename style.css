@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ededed;
+    padding: 0.68em;
+    width: 100%;
+    font-size: 12px;
+
+}
+
+
+
+img {
+    width: 200px;
+    height: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 4px 4px;
+    width: 100%;
+    grid-template-areas:
+        "header header header header"
+        ". . . ."
+    ;
+}
+
+.grid-container div {
+    background: lightyellow;
+    min-height: 80px;
+    border-top: 2px dotted blue;
+}
+
+.grid-container div:hover {
+    background: lightyellow;
+    min-height: 80px;
+    border: 2px dotted blue;
+    border-radius: 50%;
+
+}
+
+.grid-container:nth-last-child {
+    background: green;
+}
+
+header {
+    font-family: serif;
+    background: yellow;
+    justify-items: center;
+
+}
+
+h1 {
+    font-size: 2.2em;
+}
